@@ -1,0 +1,13 @@
+/var/log/redis.log
+{
+    rotate 4
+    weekly
+    missingok
+    notifempty
+    compress
+    delaycompress
+    sharedscripts
+    postrotate
+        sudo service redis restart > /dev/null
+    endscript
+}

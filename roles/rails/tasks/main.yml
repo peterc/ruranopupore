@@ -1,0 +1,4 @@
+---
+- include: ruby.yml
+- include: deploy.yml
+- include: puma.yml

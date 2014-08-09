@@ -1,0 +1,40 @@
+# Install Postgres 9.3 and create a database and user for the app
+---
+- name: add postgres repo key
+  apt_key: url=http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc
+
+- name: add postgres repo
+  apt_repository: repo='deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main'
+
+- name: install postgres
+  apt: pkg=postgresql-9.3 state=latest update_cache=true
+
+- name: copy pg_hba.conf
+  template: src=pg_hba.conf.j2 dest=/etc/postgresql/9.3/main/pg_hba.conf
+
+- name: copy postgresql.conf
+  template: src=postgresql.conf.j2 dest=/etc/postgresql/9.3/main/postgresql.conf
+
+- name: restart postgres
+  service: name=postgresql state=restarted
+
+- name: create the postgres user for application
+  postgresql_user: name=deploy
+  sudo: yes
+  sudo_user: postgres
+
+- name: create the postgres database for application in production
+  postgresql_db: name=app_{{app_name}} owner=deploy state=present
+  sudo: yes
+  sudo_user: postgres
+
+- name: create the postgres database for application in test
+  postgresql_db: name=app_{{app_name}}_test owner=deploy state=present
+  sudo: yes
+  sudo_user: postgres
+
+- name: create the postgres database for application in development
+  postgresql_db: name=app_{{app_name}}_development owner=deploy state=present
+  sudo: yes
+  sudo_user: postgres
+

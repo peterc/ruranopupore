@@ -1,0 +1,51 @@
+---
+# hostnames as will be used from browsers
+webserver_names: xyz.myapp.com vagrant1
+
+# where the app will go (should be same as :deploy_to in your Capistrano deploy.rb)
+deploy_directory: /app/myapp
+
+# a codename for the main app (used for nginx aliases, database names, etc.)
+app_name: myapp
+
+# all the main systems packages for installing a variety of goodies
+system_packages:
+  - make
+  - build-essential
+  - python-apt
+  - tcl8.5
+  - zlib1g-dev
+  - libyaml-dev
+  - libssl-dev
+  - libgdbm-dev
+  - libreadline-dev
+  - libncurses5-dev
+  - libffi-dev
+  - python-pycurl
+  - python-psycopg2
+  - bison
+  - pkg-config
+  - libreadline6
+  - libreadline6-dev
+  - openssl
+  - curl
+  - git-core
+  - zlib1g
+  - libxml2-dev
+  - libxslt1-dev
+  - automake
+  - libpq-dev
+
+redis_port: 6379
+
+# just update the versions below as Ruby and Node mature
+ruby_tmp_dir: /usr/local/src
+ruby_url: http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.2.tar.gz
+ruby_compressed_file: ruby-2.1.2.tar.gz
+ruby_name: ruby-2.1.2
+tmp_ruby_path: "{{ruby_tmp_dir}}/{{ruby_name}}"
+
+node_version: "0.10.30"
+node_prefix: "node-v{{node_version}}"
+node_tarball: "{{node_prefix}}.tar.gz"
+node_path: "/usr/local"

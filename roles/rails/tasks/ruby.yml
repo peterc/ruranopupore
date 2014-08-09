@@ -1,0 +1,21 @@
+---
+- name: ensure temporary ruby download directory is present
+  file: state=directory path={{ruby_tmp_dir}}
+
+- name: download ruby source
+  get_url: url={{ruby_url}} dest={{ruby_tmp_dir}}/{{ruby_compressed_file}}
+
+- name: ensure ruby is extracted
+  command: tar -xf {{ruby_compressed_file}} chdir={{ruby_tmp_dir}} creates={{tmp_ruby_path}}
+
+- name: configure ruby
+  command: ./configure chdir={{tmp_ruby_path}} creates={{tmp_ruby_path}}/Makefile
+
+- name: compile ruby
+  command: make chdir={{tmp_ruby_path}} creates={{tmp_ruby_path}}/ruby
+
+- name: install ruby
+  command: make install chdir={{tmp_ruby_path}} creates=/usr/local/bin/ruby
+
+- name: install bundler
+  shell: "gem list bundler -i || gem install bundler"

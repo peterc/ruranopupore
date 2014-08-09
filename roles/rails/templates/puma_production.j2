@@ -1,0 +1,21 @@
+#!/usr/bin/env puma
+
+directory '{{deploy_directory}}/current'
+rackup "{{deploy_directory}}/current/config.ru"
+environment 'production'
+
+pidfile "{{deploy_directory}}/shared/tmp/pids/puma.pid"
+state_path "{{deploy_directory}}/shared/tmp/sockets/puma.state"
+stdout_redirect '{{deploy_directory}}/shared/log/puma_access.log', '{{deploy_directory}}/shared/log/puma_error.log', true
+
+threads 0,16
+
+bind 'unix:{{deploy_directory}}/shared/tmp/sockets/puma.sock'
+workers 2
+
+preload_app!
+
+on_restart do
+  puts 'Refreshing Gemfile'
+  ENV["BUNDLE_GEMFILE"] = "{{deploy_directory}}/current/Gemfile"
+end

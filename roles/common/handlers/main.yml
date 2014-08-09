@@ -1,0 +1,8 @@
+- name: restart nginx
+  action: service name=nginx state=restarted
+- name: restart puma
+  action: service name=puma state=restarted
+- name: restart redis
+  service: name=redis state=restarted
+- name: update timezone
+  command: dpkg-reconfigure --frontend noninteractive tzdata
