@@ -35,6 +35,8 @@ system_packages:
   - libxslt1-dev
   - automake
   - libpq-dev
+  - libsqlite3-dev
+  - sqlite3
 
 redis_port: 6379
 
