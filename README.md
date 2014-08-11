@@ -17,6 +17,8 @@ https://github.com/Traackr/ansible-elasticsearch is a superb Ansible playbook fo
 
 Then include `ansible-elasticsearch` as a role in `site.yml`.
 
+*Note: ansible-elasticsearch annoyingly redefines your machine's timezone for some reason, so be sure to change this in its vars file that you include in site.yml.*
+
 ## Vagrant bits and pieces
 
 Want to run ansible-playbook directly instead of using `vagrant provision`? There's a (long winded) way:
