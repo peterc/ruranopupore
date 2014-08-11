@@ -10,11 +10,11 @@ Before I move on, remember.. this is all used at your own risk and this stuff is
 
 Quite a few bits and pieces have been cribbed, inspired by, or ripped from a variety of places, including:
 
-https://github.com/jprichardson/ansible-redis
-https://github.com/radar/ansible-rails-app
-.. which in turn took from https://github.com/dodecaphonic/ansible-rails-app
-https://github.com/jgrowl/ansible-playbook-ruby-from-src
-https://gist.github.com/acrookston/9148401
+* https://github.com/jprichardson/ansible-redis
+* https://github.com/radar/ansible-rails-app .. which in turn took from https://github.com/dodecaphonic/ansible-rails-app
+* https://github.com/jgrowl/ansible-playbook-ruby-from-src
+* https://gist.github.com/acrookston/9148401
+* https://github.com/aenglund/nodejs-ansible
 
 ## Vagrant bits and pieces
 
