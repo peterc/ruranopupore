@@ -2,19 +2,18 @@
 
 While this playbook works for the most part, it's essentially a work in progress and something I've put together while learning all of Ansible, Capistrano, and Vagrant so.. you've been warned! :-)
 
-Ruby, Nginx + Puma, Node, Postgres, and Redis (with ElasticSearch soon to follow) form the basis for the stack of significant webapps I work on. This playbook brings them all together with a role for each and should be easy to customize for your own situations. I currently have this playbook working fine against Vagrant in a local development environment.
+Ruby, Nginx + Puma, Node, Postgres, and Redis (with, optionally, ElasticSearch) form the basis for the stack of significant webapps I work on. This playbook brings them all together with a role for each and should be easy to customize for your own situations. I currently have this playbook working fine against Vagrant in a local development environment.
 
 Before I move on, remember.. this is all used at your own risk and this stuff is primary up here for my own use, but if it helps you out or you want to learn stuff from it, be my guest :-)
 
-## Credits
+## To add ElasticSearch
 
-Quite a few bits and pieces have been cribbed, inspired by, or ripped from a variety of places, including:
+https://github.com/Traackr/ansible-elasticsearch is a superb Ansible playbook for Elasticsearch and it's easy to integrate. Get RuRaNoPuPoRe set up on your app however you like and then introduce ansible-elasticsearch as a submodule:
 
-* https://github.com/jprichardson/ansible-redis
-* https://github.com/radar/ansible-rails-app .. which in turn took from https://github.com/dodecaphonic/ansible-rails-app
-* https://github.com/jgrowl/ansible-playbook-ruby-from-src
-* https://gist.github.com/acrookston/9148401
-* https://github.com/aenglund/nodejs-ansible
+    cd roles
+    git submodule add git://github.com/traackr/ansible-elasticsearch.git ./ansible-elasticsearch
+    git submodule update --init
+    git commit ./submodule -m "Added ansible-elasticsearch as submodule"
 
 ## Vagrant bits and pieces
 
@@ -60,3 +59,13 @@ And a variety of Puma related stuff some of which I figured out, some of which w
     end
 
     after 'deploy:publishing', 'deploy:restart'
+
+## Credits
+
+Quite a few bits and pieces have been cribbed, inspired by, or ripped from a variety of places, including:
+
+* https://github.com/jprichardson/ansible-redis
+* https://github.com/radar/ansible-rails-app .. which in turn took from https://github.com/dodecaphonic/ansible-rails-app
+* https://github.com/jgrowl/ansible-playbook-ruby-from-src
+* https://gist.github.com/acrookston/9148401
+* https://github.com/aenglund/nodejs-ansible
