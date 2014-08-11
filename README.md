@@ -1,4 +1,4 @@
-# RuRaNoPuPoRe: An Ubuntu 12.04 LTS Ruby, Rails, Nginx, Node.js, Puma, Postgres, and Redis Ansible Playbook Collection
+# RuRaNoPuPoRe: A Stupidly Named Ubuntu 12.04 LTS Ruby, Rails+Nginx, Node.js, Puma, Postgres, and Redis Ansible Playbook Collection
 
 While this playbook works for the most part, it's essentially a work in progress and something I've put together while learning all of Ansible, Capistrano, and Vagrant so.. you've been warned! :-)
 
