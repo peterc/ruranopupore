@@ -12,7 +12,7 @@
   tags: puma
 
 - name: Add puma shared/config
-  template: src=puma_production.j2 dest={{deploy_directory}}/shared/config/puma.rb force=yes mode=755
+  template: src=puma_production.j2 dest={{deploy_directory}}/shared/puma.rb force=yes mode=755
   tags: puma
 
 - name: Make shared/tmp/sockets
