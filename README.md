@@ -15,6 +15,8 @@ https://github.com/Traackr/ansible-elasticsearch is a superb Ansible playbook fo
     git submodule update --init
     git commit ./submodule -m "Added ansible-elasticsearch as submodule"
 
+Then include `ansible-elasticsearch` as a role in `site.yml`.
+
 ## Vagrant bits and pieces
 
 Want to run ansible-playbook directly instead of using `vagrant provision`? There's a (long winded) way:
