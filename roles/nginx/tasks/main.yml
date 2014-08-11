@@ -21,3 +21,5 @@
 - name: Restart nginx
   action: service name=nginx state=restarted
 
+- name: make nginx start on boot
+  service: name=nginx enabled=yes

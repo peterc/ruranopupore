@@ -38,3 +38,5 @@
   sudo: yes
   sudo_user: postgres
 
+- name: make postgres start on boot
+  service: name=postgresql enabled=yes
